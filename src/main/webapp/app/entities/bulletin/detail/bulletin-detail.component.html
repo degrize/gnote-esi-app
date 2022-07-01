@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bulletin">
+      <h2 data-cy="bulletinDetailsHeading"><span jhiTranslate="gnoteEsiApp.bulletin.detail.title">Bulletin</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bulletin.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.bulletin.signatureDG">Signature DG</span></dt>
+        <dd>
+          <span>{{ bulletin.signatureDG }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.bulletin.observation">Observation</span></dt>
+        <dd>
+          <span>{{ bulletin.observation }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.bulletin.etudiant">Etudiant</span></dt>
+        <dd>
+          <div *ngIf="bulletin.etudiant">
+            <a [routerLink]="['/etudiant', bulletin.etudiant?.id, 'view']">{{ bulletin.etudiant?.matriculeET }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.bulletin.semestre">Semestre</span></dt>
+        <dd>
+          <div *ngIf="bulletin.semestre">
+            <a [routerLink]="['/semestre', bulletin.semestre?.id, 'view']">{{ bulletin.semestre?.nomSemestre }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.bulletin.professeur">Professeur</span></dt>
+        <dd>
+          <span *ngFor="let professeur of bulletin.professeurs; let last = last">
+            <a [routerLink]="['/professeur', professeur?.id, 'view']">{{ professeur.nomProf }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bulletin', bulletin.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

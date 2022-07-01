@@ -1,0 +1,30 @@
+{
+  "gnoteEsiApp": {
+    "soutenance": {
+      "home": {
+        "title": "Soutenances",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Soutenance",
+        "createOrEditLabel": "Crear o editar Soutenance",
+        "notFound": "Ningún Soutenances encontrado"
+      },
+      "created": "Un nuevo Soutenance ha sido creado con el identificador {{ param }}",
+      "updated": "Un Soutenance ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Soutenance ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Soutenance {{ id }}?"
+      },
+      "detail": {
+        "title": "Soutenance"
+      },
+      "id": "ID",
+      "typeSout": "Type Sout",
+      "themeSout": "Theme Sout",
+      "noteSout": "Note Sout",
+      "jury": "Jury",
+      "salle": "Salle",
+      "horaire": "Horaire",
+      "etudiant": "Etudiant"
+    }
+  }
+}

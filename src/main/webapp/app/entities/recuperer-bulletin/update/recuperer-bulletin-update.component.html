@@ -1,0 +1,152 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-recuperer-bulletin-heading"
+        data-cy="RecupererBulletinCreateUpdateHeading"
+        jhiTranslate="gnoteEsiApp.recupererBulletin.home.createOrEditLabel"
+      >
+        Create or edit a Recuperer Bulletin
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.recupererBulletin.signatureEleve" for="field_signatureEleve"
+            >Signature Eleve</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="signatureEleve"
+            id="field_signatureEleve"
+            data-cy="signatureEleve"
+            formControlName="signatureEleve"
+          />
+          <div
+            *ngIf="
+              editForm.get('signatureEleve')!.invalid && (editForm.get('signatureEleve')!.dirty || editForm.get('signatureEleve')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('signatureEleve')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.recupererBulletin.bulletinScanne" for="field_bulletinScanne"
+            >Bulletin Scanne</label
+          >
+          <div>
+            <div *ngIf="editForm.get('bulletinScanne')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('bulletinScanne')!.value, editForm.get('bulletinScanneContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('bulletinScanneContentType')!.value }}, {{ byteSize(editForm.get('bulletinScanne')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ bulletinScanne: null }); editForm.patchValue({ bulletinScanneContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_bulletinScanne"
+              data-cy="bulletinScanne"
+              (change)="setFileData($event, 'bulletinScanne', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="bulletinScanne"
+            id="field_bulletinScanne"
+            data-cy="bulletinScanne"
+            formControlName="bulletinScanne"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="bulletinScanneContentType"
+            id="field_bulletinScanneContentType"
+            formControlName="bulletinScanneContentType"
+          />
+          <div
+            *ngIf="
+              editForm.get('bulletinScanne')!.invalid && (editForm.get('bulletinScanne')!.dirty || editForm.get('bulletinScanne')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bulletinScanne')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.recupererBulletin.etudiant" for="field_etudiant">Etudiant</label>
+          <select class="form-control" id="field_etudiant" data-cy="etudiant" name="etudiant" formControlName="etudiant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="etudiantOption.id === editForm.get('etudiant')!.value?.id ? editForm.get('etudiant')!.value : etudiantOption"
+              *ngFor="let etudiantOption of etudiantsSharedCollection; trackBy: trackEtudiantById"
+            >
+              {{ etudiantOption.matriculeET }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.recupererBulletin.bulletin" for="field_bulletin">Bulletin</label>
+          <select class="form-control" id="field_bulletin" data-cy="bulletin" name="bulletin" formControlName="bulletin">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="bulletinOption.id === editForm.get('bulletin')!.value?.id ? editForm.get('bulletin')!.value : bulletinOption"
+              *ngFor="let bulletinOption of bulletinsSharedCollection; trackBy: trackBulletinById"
+            >
+              {{ bulletinOption.observation }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

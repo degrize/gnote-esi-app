@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="BulletinHeading">
+    <span jhiTranslate="gnoteEsiApp.bulletin.home.title">Bulletins</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gnoteEsiApp.bulletin.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bulletin"
+        [routerLink]="['/bulletin/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gnoteEsiApp.bulletin.home.createLabel"> Create a new Bulletin </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bulletins?.length === 0">
+    <span jhiTranslate="gnoteEsiApp.bulletin.home.notFound">No bulletins found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="bulletins && bulletins.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="signatureDG">
+            <span jhiTranslate="gnoteEsiApp.bulletin.signatureDG">Signature DG</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="observation">
+            <span jhiTranslate="gnoteEsiApp.bulletin.observation">Observation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="etudiant.matriculeET">
+            <span jhiTranslate="gnoteEsiApp.bulletin.etudiant">Etudiant</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="semestre.nomSemestre">
+            <span jhiTranslate="gnoteEsiApp.bulletin.semestre">Semestre</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bulletin of bulletins; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/bulletin', bulletin.id, 'view']">{{ bulletin.id }}</a>
+          </td>
+          <td>{{ bulletin.signatureDG }}</td>
+          <td>{{ bulletin.observation }}</td>
+          <td>
+            <div *ngIf="bulletin.etudiant">
+              <a [routerLink]="['/etudiant', bulletin.etudiant?.id, 'view']">{{ bulletin.etudiant?.matriculeET }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="bulletin.semestre">
+              <a [routerLink]="['/semestre', bulletin.semestre?.id, 'view']">{{ bulletin.semestre?.nomSemestre }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/bulletin', bulletin.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/bulletin', bulletin.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(bulletin)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="bulletins && bulletins.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083915",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "absence",
+  "fields": [
+    {
+      "fieldName": "etat",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "heureDebut",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "heureFin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "justificationEcrit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "justificationNumerique",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Absence.\\n@author Luis-Borges.",
+  "jpaMetamodelFiltering": false,
+  "name": "Absence",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomProf",
+      "otherEntityName": "professeur",
+      "otherEntityRelationshipName": "absence",
+      "relationshipName": "professeur",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomInspecteur",
+      "otherEntityName": "inspecteur",
+      "otherEntityRelationshipName": "absence",
+      "relationshipName": "inspecteur",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomEC",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "absence",
+      "relationshipName": "matiere",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "absence",
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

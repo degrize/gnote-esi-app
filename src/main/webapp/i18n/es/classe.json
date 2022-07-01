@@ -1,0 +1,28 @@
+{
+  "gnoteEsiApp": {
+    "classe": {
+      "home": {
+        "title": "Classes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Classe",
+        "createOrEditLabel": "Crear o editar Classe",
+        "notFound": "Ningún Classes encontrado"
+      },
+      "created": "Un nuevo Classe ha sido creado con el identificador {{ param }}",
+      "updated": "Un Classe ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Classe ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Classe {{ id }}?"
+      },
+      "detail": {
+        "title": "Classe"
+      },
+      "id": "ID",
+      "nomClasse": "Nom Classe",
+      "filiere": "Filiere",
+      "matiere": "Matiere",
+      "professeur": "Professeur",
+      "etudiant": "Etudiant"
+    }
+  }
+}

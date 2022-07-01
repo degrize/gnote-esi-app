@@ -1,0 +1,29 @@
+{
+  "gnoteEsiApp": {
+    "matiere": {
+      "home": {
+        "title": "Matieres",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Matiere",
+        "createOrEditLabel": "Crear o editar Matiere",
+        "notFound": "Ningún Matieres encontrado"
+      },
+      "created": "Un nuevo Matiere ha sido creado con el identificador {{ param }}",
+      "updated": "Un Matiere ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Matiere ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Matiere {{ id }}?"
+      },
+      "detail": {
+        "title": "Matiere"
+      },
+      "id": "ID",
+      "nomEC": "Nom EC",
+      "coeff": "Coeff",
+      "module": "Module",
+      "professeur": "Professeur",
+      "note": "Note",
+      "classe": "Classe"
+    }
+  }
+}

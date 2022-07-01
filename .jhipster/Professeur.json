@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083911",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "professeur",
+  "fields": [
+    {
+      "fieldName": "nomProf",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomProf",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contactProf",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Professeur",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": true,
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "nomClasse",
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": true,
+      "relationshipName": "classe",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "nomEC",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": true,
+      "relationshipName": "matiere",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "inspecteur",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": false,
+      "relationshipName": "inspecteur",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "bulletin",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": false,
+      "relationshipName": "bulletin",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "jury",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": false,
+      "relationshipName": "jury",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "demandeInspecteurDE",
+      "otherEntityRelationshipName": "professeur",
+      "ownerSide": false,
+      "relationshipName": "demandeInspecteurDE",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

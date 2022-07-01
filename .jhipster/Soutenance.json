@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083921",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "soutenance",
+  "fields": [
+    {
+      "fieldName": "typeSout",
+      "fieldType": "TypeSoutenance",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PFE,UP_PRO,STAGE_APPLICATION,STAGE_IMERTION,BE,AUTRE"
+    },
+    {
+      "fieldName": "themeSout",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "noteSout",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Soutenance",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "presidentJury",
+      "otherEntityName": "jury",
+      "otherEntityRelationshipName": "soutenance",
+      "relationshipName": "jury",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "numeroSalle",
+      "otherEntityName": "salle",
+      "otherEntityRelationshipName": "soutenance",
+      "relationshipName": "salle",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "dateSout",
+      "otherEntityName": "horaire",
+      "otherEntityRelationshipName": "soutenance",
+      "relationshipName": "horaire",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "soutenance",
+      "ownerSide": true,
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

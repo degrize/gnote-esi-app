@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="semestre">
+      <h2 data-cy="semestreDetailsHeading"><span jhiTranslate="gnoteEsiApp.semestre.detail.title">Semestre</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ semestre.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.semestre.nomSemestre">Nom Semestre</span></dt>
+        <dd>
+          <span>{{ semestre.nomSemestre }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.semestre.anneeScolaire">Annee Scolaire</span></dt>
+        <dd>
+          <div *ngIf="semestre.anneeScolaire">
+            <a [routerLink]="['/annee-scolaire', semestre.anneeScolaire?.id, 'view']">{{ semestre.anneeScolaire?.periode }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/semestre', semestre.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

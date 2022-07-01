@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-soutenance-heading" data-cy="SoutenanceCreateUpdateHeading" jhiTranslate="gnoteEsiApp.soutenance.home.createOrEditLabel">
+        Create or edit a Soutenance
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.soutenance.typeSout" for="field_typeSout">Type Sout</label>
+          <select class="form-control" name="typeSout" formControlName="typeSout" id="field_typeSout" data-cy="typeSout">
+            <option [ngValue]="null">{{ 'gnoteEsiApp.TypeSoutenance.null' | translate }}</option>
+            <option *ngFor="let typeSoutenance of typeSoutenanceValues" [value]="typeSoutenance">
+              {{ 'gnoteEsiApp.TypeSoutenance.' + typeSoutenance | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('typeSout')!.invalid && (editForm.get('typeSout')!.dirty || editForm.get('typeSout')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('typeSout')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.soutenance.themeSout" for="field_themeSout">Theme Sout</label>
+          <input type="text" class="form-control" name="themeSout" id="field_themeSout" data-cy="themeSout" formControlName="themeSout" />
+          <div *ngIf="editForm.get('themeSout')!.invalid && (editForm.get('themeSout')!.dirty || editForm.get('themeSout')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('themeSout')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.soutenance.noteSout" for="field_noteSout">Note Sout</label>
+          <input type="number" class="form-control" name="noteSout" id="field_noteSout" data-cy="noteSout" formControlName="noteSout" />
+          <div *ngIf="editForm.get('noteSout')!.invalid && (editForm.get('noteSout')!.dirty || editForm.get('noteSout')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('noteSout')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('noteSout')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.soutenance.salle" for="field_salle">Salle</label>
+          <select class="form-control" id="field_salle" data-cy="salle" name="salle" formControlName="salle">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="salleOption.id === editForm.get('salle')!.value?.id ? editForm.get('salle')!.value : salleOption"
+              *ngFor="let salleOption of sallesSharedCollection; trackBy: trackSalleById"
+            >
+              {{ salleOption.numeroSalle }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.soutenance.horaire" for="field_horaire">Horaire</label>
+          <select class="form-control" id="field_horaire" data-cy="horaire" name="horaire" formControlName="horaire">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="horaireOption.id === editForm.get('horaire')!.value?.id ? editForm.get('horaire')!.value : horaireOption"
+              *ngFor="let horaireOption of horairesSharedCollection; trackBy: trackHoraireById"
+            >
+              {{ horaireOption.dateSout }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gnoteEsiApp.soutenance.etudiant" for="field_etudiants">Etudiant</label>
+          <select class="form-control" id="field_etudiants" data-cy="etudiant" multiple name="etudiants" formControlName="etudiants">
+            <option
+              [ngValue]="getSelectedEtudiant(etudiantOption, editForm.get('etudiants')!.value)"
+              *ngFor="let etudiantOption of etudiantsSharedCollection; trackBy: trackEtudiantById"
+            >
+              {{ etudiantOption.matriculeET }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

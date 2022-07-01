@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="absence">
+      <h2 data-cy="absenceDetailsHeading"><span jhiTranslate="gnoteEsiApp.absence.detail.title">Absence</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ absence.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.etat">Etat</span></dt>
+        <dd>
+          <span>{{ absence.etat }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.heureDebut">Heure Debut</span></dt>
+        <dd>
+          <span>{{ absence.heureDebut }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.heureFin">Heure Fin</span></dt>
+        <dd>
+          <span>{{ absence.heureFin }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.justificationEcrit">Justification Ecrit</span></dt>
+        <dd>
+          <span>{{ absence.justificationEcrit }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.justificationNumerique">Justification Numerique</span></dt>
+        <dd>
+          <div *ngIf="absence.justificationNumerique">
+            <a
+              (click)="openFile(absence.justificationNumerique, absence.justificationNumeriqueContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ absence.justificationNumeriqueContentType }}, {{ byteSize(absence.justificationNumerique) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.professeur">Professeur</span></dt>
+        <dd>
+          <div *ngIf="absence.professeur">
+            <a [routerLink]="['/professeur', absence.professeur?.id, 'view']">{{ absence.professeur?.nomProf }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.inspecteur">Inspecteur</span></dt>
+        <dd>
+          <div *ngIf="absence.inspecteur">
+            <a [routerLink]="['/inspecteur', absence.inspecteur?.id, 'view']">{{ absence.inspecteur?.nomInspecteur }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.matiere">Matiere</span></dt>
+        <dd>
+          <div *ngIf="absence.matiere">
+            <a [routerLink]="['/matiere', absence.matiere?.id, 'view']">{{ absence.matiere?.nomEC }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.absence.etudiant">Etudiant</span></dt>
+        <dd>
+          <div *ngIf="absence.etudiant">
+            <a [routerLink]="['/etudiant', absence.etudiant?.id, 'view']">{{ absence.etudiant?.matriculeET }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/absence', absence.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

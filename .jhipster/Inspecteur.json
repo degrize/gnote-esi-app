@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083916",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "inspecteur",
+  "fields": [
+    {
+      "fieldName": "nomInspecteur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "The firstname attribute."
+    },
+    {
+      "fieldName": "prenomInspecteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactInspecteur",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Employee entity.",
+  "jpaMetamodelFiltering": false,
+  "name": "Inspecteur",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomProf",
+      "otherEntityName": "professeur",
+      "otherEntityRelationshipName": "inspecteur",
+      "ownerSide": true,
+      "relationshipName": "professeur",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "inspecteur",
+      "ownerSide": true,
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "demandeInspecteurEtudiant",
+      "otherEntityRelationshipName": "inspecteur",
+      "ownerSide": false,
+      "relationshipName": "demandeInspecteurEtudiant",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "demandeInspecteurDE",
+      "otherEntityRelationshipName": "inspecteur",
+      "ownerSide": false,
+      "relationshipName": "demandeInspecteurDE",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

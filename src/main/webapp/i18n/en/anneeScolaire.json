@@ -1,0 +1,29 @@
+{
+  "gnoteEsiApp": {
+    "anneeScolaire": {
+      "home": {
+        "title": "Annee Scolaires",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Annee Scolaire",
+        "createOrEditLabel": "Create or edit a Annee Scolaire",
+        "notFound": "No Annee Scolaires found"
+      },
+      "created": "A new Annee Scolaire is created with identifier {{ param }}",
+      "updated": "A Annee Scolaire is updated with identifier {{ param }}",
+      "deleted": "A Annee Scolaire is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Annee Scolaire {{ id }}?"
+      },
+      "detail": {
+        "title": "Annee Scolaire"
+      },
+      "id": "ID",
+      "periode": "Periode",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "help": {
+        "periode": "L&#39; année scolaire\n@author Eleve."
+      }
+    }
+  }
+}

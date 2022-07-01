@@ -1,0 +1,27 @@
+{
+  "gnoteEsiApp": {
+    "encadreur": {
+      "home": {
+        "title": "Encadreurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Encadreur",
+        "createOrEditLabel": "Create or edit a Encadreur",
+        "notFound": "No Encadreurs found"
+      },
+      "created": "A new Encadreur is created with identifier {{ param }}",
+      "updated": "A Encadreur is updated with identifier {{ param }}",
+      "deleted": "A Encadreur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Encadreur {{ id }}?"
+      },
+      "detail": {
+        "title": "Encadreur"
+      },
+      "id": "ID",
+      "nomEnc": "Nom Enc",
+      "prenomsEnc": "Prenoms Enc",
+      "emailEnc": "Email Enc",
+      "etudiant": "Etudiant"
+    }
+  }
+}

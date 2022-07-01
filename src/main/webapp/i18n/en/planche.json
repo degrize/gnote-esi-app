@@ -1,0 +1,25 @@
+{
+  "gnoteEsiApp": {
+    "planche": {
+      "home": {
+        "title": "Planches",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Planche",
+        "createOrEditLabel": "Create or edit a Planche",
+        "notFound": "No Planches found"
+      },
+      "created": "A new Planche is created with identifier {{ param }}",
+      "updated": "A Planche is updated with identifier {{ param }}",
+      "deleted": "A Planche is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Planche {{ id }}?"
+      },
+      "detail": {
+        "title": "Planche"
+      },
+      "id": "ID",
+      "observation": "Observation",
+      "semestre": "Semestre"
+    }
+  }
+}

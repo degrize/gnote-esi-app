@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Soutenance.
+    -->
+    <changeSet id="20220701083921-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="salle_id"
+                                 baseTableName="soutenance"
+                                 constraintName="fk_soutenance__salle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="salle"/>
+
+        <addForeignKeyConstraint baseColumnNames="horaire_id"
+                                 baseTableName="soutenance"
+                                 constraintName="fk_soutenance__horaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="horaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="soutenance_id"
+                                 baseTableName="rel_soutenance__etudiant"
+                                 constraintName="fk_rel_soutenance__etudiant__soutenance_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="soutenance"/>
+
+        <addForeignKeyConstraint baseColumnNames="etudiant_id"
+                                 baseTableName="rel_soutenance__etudiant"
+                                 constraintName="fk_rel_soutenance__etudiant__etudiant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etudiant"/>
+    </changeSet>
+</databaseChangeLog>

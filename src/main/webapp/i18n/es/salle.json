@@ -1,0 +1,27 @@
+{
+  "gnoteEsiApp": {
+    "salle": {
+      "home": {
+        "title": "Salles",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Salle",
+        "createOrEditLabel": "Crear o editar Salle",
+        "notFound": "Ningún Salles encontrado"
+      },
+      "created": "Un nuevo Salle ha sido creado con el identificador {{ param }}",
+      "updated": "Un Salle ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Salle ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Salle {{ id }}?"
+      },
+      "detail": {
+        "title": "Salle"
+      },
+      "id": "ID",
+      "numeroSalle": "Numero Salle",
+      "nbrePlace": "Nbre Place",
+      "etat": "Etat",
+      "horaire": "Horaire"
+    }
+  }
+}

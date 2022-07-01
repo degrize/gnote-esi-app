@@ -1,0 +1,32 @@
+{
+  "gnoteEsiApp": {
+    "absence": {
+      "home": {
+        "title": "Absences",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Absence",
+        "createOrEditLabel": "Crear o editar Absence",
+        "notFound": "Ningún Absences encontrado"
+      },
+      "created": "Un nuevo Absence ha sido creado con el identificador {{ param }}",
+      "updated": "Un Absence ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Absence ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Absence {{ id }}?"
+      },
+      "detail": {
+        "title": "Absence"
+      },
+      "id": "ID",
+      "etat": "Etat",
+      "heureDebut": "Heure Debut",
+      "heureFin": "Heure Fin",
+      "justificationEcrit": "Justification Ecrit",
+      "justificationNumerique": "Justification Numerique",
+      "professeur": "Professeur",
+      "inspecteur": "Inspecteur",
+      "matiere": "Matiere",
+      "etudiant": "Etudiant"
+    }
+  }
+}

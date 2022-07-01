@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-encadreur-heading" data-cy="EncadreurCreateUpdateHeading" jhiTranslate="gnoteEsiApp.encadreur.home.createOrEditLabel">
+        Create or edit a Encadreur
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.encadreur.nomEnc" for="field_nomEnc">Nom Enc</label>
+          <input type="text" class="form-control" name="nomEnc" id="field_nomEnc" data-cy="nomEnc" formControlName="nomEnc" />
+          <div *ngIf="editForm.get('nomEnc')!.invalid && (editForm.get('nomEnc')!.dirty || editForm.get('nomEnc')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nomEnc')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.encadreur.prenomsEnc" for="field_prenomsEnc">Prenoms Enc</label>
+          <input
+            type="text"
+            class="form-control"
+            name="prenomsEnc"
+            id="field_prenomsEnc"
+            data-cy="prenomsEnc"
+            formControlName="prenomsEnc"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.encadreur.emailEnc" for="field_emailEnc">Email Enc</label>
+          <input type="text" class="form-control" name="emailEnc" id="field_emailEnc" data-cy="emailEnc" formControlName="emailEnc" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Professeur.
+    -->
+    <changeSet id="20220701083911-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="professeur_id"
+                                 baseTableName="rel_professeur__etudiant"
+                                 constraintName="fk_rel_professeur__etudiant__professeur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professeur"/>
+
+        <addForeignKeyConstraint baseColumnNames="etudiant_id"
+                                 baseTableName="rel_professeur__etudiant"
+                                 constraintName="fk_rel_professeur__etudiant__etudiant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etudiant"/>
+
+        <addForeignKeyConstraint baseColumnNames="professeur_id"
+                                 baseTableName="rel_professeur__classe"
+                                 constraintName="fk_rel_professeur__classe__professeur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professeur"/>
+
+        <addForeignKeyConstraint baseColumnNames="classe_id"
+                                 baseTableName="rel_professeur__classe"
+                                 constraintName="fk_rel_professeur__classe__classe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="classe"/>
+
+        <addForeignKeyConstraint baseColumnNames="professeur_id"
+                                 baseTableName="rel_professeur__matiere"
+                                 constraintName="fk_rel_professeur__matiere__professeur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professeur"/>
+
+        <addForeignKeyConstraint baseColumnNames="matiere_id"
+                                 baseTableName="rel_professeur__matiere"
+                                 constraintName="fk_rel_professeur__matiere__matiere_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="matiere"/>
+    </changeSet>
+</databaseChangeLog>

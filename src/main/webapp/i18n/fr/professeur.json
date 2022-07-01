@@ -1,0 +1,33 @@
+{
+  "gnoteEsiApp": {
+    "professeur": {
+      "home": {
+        "title": "Professeurs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Professeur",
+        "createOrEditLabel": "Créer ou éditer un Professeur",
+        "notFound": "Aucun Professeur trouvé"
+      },
+      "created": "Un nouveau Professeur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Professeur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Professeur avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Professeur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Professeur"
+      },
+      "id": "ID",
+      "nomProf": "Nom Prof",
+      "prenomProf": "Prenom Prof",
+      "contactProf": "Contact Prof",
+      "etudiant": "Etudiant",
+      "classe": "Classe",
+      "matiere": "Matiere",
+      "inspecteur": "Inspecteur",
+      "bulletin": "Bulletin",
+      "jury": "Jury",
+      "demandeInspecteurDE": "Demande Inspecteur DE"
+    }
+  }
+}

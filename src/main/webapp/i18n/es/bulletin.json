@@ -1,0 +1,28 @@
+{
+  "gnoteEsiApp": {
+    "bulletin": {
+      "home": {
+        "title": "Bulletins",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Bulletin",
+        "createOrEditLabel": "Crear o editar Bulletin",
+        "notFound": "Ningún Bulletins encontrado"
+      },
+      "created": "Un nuevo Bulletin ha sido creado con el identificador {{ param }}",
+      "updated": "Un Bulletin ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Bulletin ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Bulletin {{ id }}?"
+      },
+      "detail": {
+        "title": "Bulletin"
+      },
+      "id": "ID",
+      "signatureDG": "Signature DG",
+      "observation": "Observation",
+      "etudiant": "Etudiant",
+      "semestre": "Semestre",
+      "professeur": "Professeur"
+    }
+  }
+}

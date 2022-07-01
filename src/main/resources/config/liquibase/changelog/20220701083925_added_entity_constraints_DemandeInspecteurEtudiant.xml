@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity DemandeInspecteurEtudiant.
+    -->
+    <changeSet id="20220701083925-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="demande_inspecteur_etudiant_id"
+                                 baseTableName="rel_demande_inspecteur_etudiant__etudiant"
+                                 constraintName="fk_rel_demande_inspecteur_etudi__demande_inspecteur_etudi_47_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="demande_inspecteur_etudiant"/>
+
+        <addForeignKeyConstraint baseColumnNames="etudiant_id"
+                                 baseTableName="rel_demande_inspecteur_etudiant__etudiant"
+                                 constraintName="fk_rel_demande_inspecteur_etudiant__etudiant__etudiant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etudiant"/>
+
+        <addForeignKeyConstraint baseColumnNames="demande_inspecteur_etudiant_id"
+                                 baseTableName="rel_demande_inspecteur_etudiant__inspecteur"
+                                 constraintName="fk_rel_demande_inspecteur_etudi__demande_inspecteur_etudi_62_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="demande_inspecteur_etudiant"/>
+
+        <addForeignKeyConstraint baseColumnNames="inspecteur_id"
+                                 baseTableName="rel_demande_inspecteur_etudiant__inspecteur"
+                                 constraintName="fk_rel_demande_inspecteur_etudiant__inspecteur__inspecteur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="inspecteur"/>
+    </changeSet>
+</databaseChangeLog>

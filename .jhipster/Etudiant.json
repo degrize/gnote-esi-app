@@ -1,0 +1,98 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083914",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "etudiant",
+  "fields": [
+    {
+      "fieldName": "matriculeET",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nomET",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomET",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "numeroParent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroTuteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactET",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Etudiant",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomClasse",
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": true,
+      "relationshipName": "classe",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "encadreur",
+      "otherEntityRelationshipName": "etudiant",
+      "relationshipName": "encadreur",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "inspecteur",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": false,
+      "relationshipName": "inspecteur",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "professeur",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": false,
+      "relationshipName": "professeur",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "soutenance",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": false,
+      "relationshipName": "soutenance",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "note",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": false,
+      "relationshipName": "note",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "demandeInspecteurEtudiant",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": false,
+      "relationshipName": "demandeInspecteurEtudiant",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

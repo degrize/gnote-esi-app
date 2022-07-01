@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-salle-heading" data-cy="SalleCreateUpdateHeading" jhiTranslate="gnoteEsiApp.salle.home.createOrEditLabel">
+        Create or edit a Salle
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.salle.numeroSalle" for="field_numeroSalle">Numero Salle</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroSalle"
+            id="field_numeroSalle"
+            data-cy="numeroSalle"
+            formControlName="numeroSalle"
+          />
+          <div *ngIf="editForm.get('numeroSalle')!.invalid && (editForm.get('numeroSalle')!.dirty || editForm.get('numeroSalle')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('numeroSalle')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.salle.nbrePlace" for="field_nbrePlace">Nbre Place</label>
+          <input type="number" class="form-control" name="nbrePlace" id="field_nbrePlace" data-cy="nbrePlace" formControlName="nbrePlace" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.salle.etat" for="field_etat">Etat</label>
+          <input type="text" class="form-control" name="etat" id="field_etat" data-cy="etat" formControlName="etat" />
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gnoteEsiApp.salle.horaire" for="field_horaires">Horaire</label>
+          <select class="form-control" id="field_horaires" data-cy="horaire" multiple name="horaires" formControlName="horaires">
+            <option
+              [ngValue]="getSelectedHoraire(horaireOption, editForm.get('horaires')!.value)"
+              *ngFor="let horaireOption of horairesSharedCollection; trackBy: trackHoraireById"
+            >
+              {{ horaireOption.dateSout }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

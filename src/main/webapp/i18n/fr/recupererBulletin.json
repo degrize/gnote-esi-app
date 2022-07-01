@@ -1,0 +1,27 @@
+{
+  "gnoteEsiApp": {
+    "recupererBulletin": {
+      "home": {
+        "title": "RecupererBulletins",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Recuperer Bulletin",
+        "createOrEditLabel": "Créer ou éditer un Recuperer Bulletin",
+        "notFound": "Aucun Recuperer Bulletin trouvé"
+      },
+      "created": "Un nouveau Recuperer Bulletin a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Recuperer Bulletin avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Recuperer Bulletin avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Recuperer Bulletin {{ id }} ?"
+      },
+      "detail": {
+        "title": "Recuperer Bulletin"
+      },
+      "id": "ID",
+      "signatureEleve": "Signature Eleve",
+      "bulletinScanne": "Bulletin Scanne",
+      "etudiant": "Etudiant",
+      "bulletin": "Bulletin"
+    }
+  }
+}

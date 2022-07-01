@@ -1,0 +1,25 @@
+{
+  "gnoteEsiApp": {
+    "semestre": {
+      "home": {
+        "title": "Semestres",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Semestre",
+        "createOrEditLabel": "Créer ou éditer un Semestre",
+        "notFound": "Aucun Semestre trouvé"
+      },
+      "created": "Un nouveau Semestre a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Semestre avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Semestre avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Semestre {{ id }} ?"
+      },
+      "detail": {
+        "title": "Semestre"
+      },
+      "id": "ID",
+      "nomSemestre": "Nom Semestre",
+      "anneeScolaire": "Annee Scolaire"
+    }
+  }
+}

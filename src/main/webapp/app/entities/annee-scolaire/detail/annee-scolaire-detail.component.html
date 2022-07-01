@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="anneeScolaire">
+      <h2 data-cy="anneeScolaireDetailsHeading"><span jhiTranslate="gnoteEsiApp.anneeScolaire.detail.title">Annee Scolaire</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ anneeScolaire.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="gnoteEsiApp.anneeScolaire.periode" [ngbTooltip]="'gnoteEsiApp.anneeScolaire.help.periode' | translate"
+            >Periode</span
+          >
+        </dt>
+        <dd>
+          <span>{{ anneeScolaire.periode }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.anneeScolaire.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ anneeScolaire.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.anneeScolaire.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ anneeScolaire.dateFin | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/annee-scolaire', anneeScolaire.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

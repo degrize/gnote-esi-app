@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="professeur">
+      <h2 data-cy="professeurDetailsHeading"><span jhiTranslate="gnoteEsiApp.professeur.detail.title">Professeur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ professeur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.professeur.nomProf">Nom Prof</span></dt>
+        <dd>
+          <span>{{ professeur.nomProf }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.professeur.prenomProf">Prenom Prof</span></dt>
+        <dd>
+          <span>{{ professeur.prenomProf }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.professeur.contactProf">Contact Prof</span></dt>
+        <dd>
+          <span>{{ professeur.contactProf }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.professeur.etudiant">Etudiant</span></dt>
+        <dd>
+          <span *ngFor="let etudiant of professeur.etudiants; let last = last">
+            <a [routerLink]="['/etudiant', etudiant?.id, 'view']">{{ etudiant.matriculeET }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.professeur.classe">Classe</span></dt>
+        <dd>
+          <span *ngFor="let classe of professeur.classes; let last = last">
+            <a [routerLink]="['/classe', classe?.id, 'view']">{{ classe.nomClasse }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.professeur.matiere">Matiere</span></dt>
+        <dd>
+          <span *ngFor="let matiere of professeur.matieres; let last = last">
+            <a [routerLink]="['/matiere', matiere?.id, 'view']">{{ matiere.nomEC }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/professeur', professeur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

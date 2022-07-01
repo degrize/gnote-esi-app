@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Semestre.
+    -->
+    <changeSet id="20220701083908-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="annee_scolaire_id"
+                                 baseTableName="semestre"
+                                 constraintName="fk_semestre__annee_scolaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="annee_scolaire"/>
+    </changeSet>
+</databaseChangeLog>

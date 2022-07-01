@@ -1,0 +1,296 @@
+/**
+ * AnneeScolaire entity.
+ * @author Luis-Borges.
+ */
+entity AnneeScolaire {
+	/**
+     * L' année scolaire
+     * @author Eleve.
+    */
+	periode String required,
+    dateDebut LocalDate required,
+    dateFin LocalDate,
+    
+}
+
+
+entity Planche{
+	observation String required
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Semestre {
+	nomSemestre String required
+}
+
+
+entity Note {
+	note Double required,
+    typeNote TypeNote required
+}
+
+entity Bulletin {
+	signatureDG String required,
+	observation String required
+}
+
+
+entity Professeur {
+	
+    nomProf String required,
+    prenomProf String required,
+    contactProf String,
+    
+}
+
+entity Filiere {
+	
+    nomFiliere String required,
+    
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Classe {
+	nomClasse String required,
+	
+}
+
+entity Etudiant {
+	matriculeET String required,
+	nomET String required,
+    prenomET String required,
+    photo Blob,
+    numeroParent String,
+    numeroTuteur String,
+    contactET String,
+}
+
+/**
+ * Absence.
+ * @author Luis-Borges.
+ */
+entity Absence {
+	etat String required,
+    heureDebut String,
+    heureFin String,
+    justificationEcrit String,
+    justificationNumerique Blob,
+}
+
+/**
+ * The Employee entity.
+ */
+entity Inspecteur{
+	/**
+	* The firstname attribute.
+	*/
+	nomInspecteur String required,
+    prenomInspecteur String,
+    contactInspecteur String,
+	
+}
+
+
+entity Matiere {
+	nomEC String required,
+    coeff Integer required,
+	
+}
+
+entity Module {
+	nomUE String,
+	
+}
+
+
+entity Encadreur {
+	nomEnc String required,
+    prenomsEnc String,
+    emailEnc String
+}
+
+
+
+// an ignored comment
+/** not an ignored comment */
+entity Horaire {
+    dateSout LocalDate required,
+    dateEffet LocalDate
+}
+
+entity Soutenance {
+	typeSout TypeSoutenance required,
+    themeSout String required,
+    noteSout Double required,
+}
+
+
+/**
+ * Salle entity.
+ * @author The Luis-Borges.
+ */
+entity Salle {
+	numeroSalle String required,
+	nbrePlace Integer,
+    etat String
+}
+
+/**
+ * The Jury entity.
+ */
+entity Jury {
+	/**
+	* The firstname attribute.
+	*/
+	presidentJury String required,
+}
+
+entity Cycle {
+	nomCycle TypeCycle required,
+}
+
+entity DemandeInspecteurEtudiant {
+	message String required
+}
+
+entity DemandeInspecteurDE {
+	message String required
+}
+
+entity RecupererBulletin {
+	signatureEleve String required,
+    bulletinScanne Blob required
+}
+
+
+enum TypeSoutenance {
+	PFE,
+    UP_PRO,
+    STAGE_APPLICATION,
+    STAGE_IMERTION,
+    BE,
+    AUTRE
+}
+
+enum TypeCycle {
+	TS,
+    ING
+}
+
+enum TypeNote {
+    DEVOIR_SUR_TABLE,
+    INTERROGATION,
+    PROJET,
+    DEVOIR_DE_MAISON,
+    PARTICIPATION
+}
+
+
+relationship ManyToOne {
+	Absence{professeur(nomProf)} to Professeur,
+    Absence {inspecteur(nomInspecteur)} to Inspecteur,
+    Absence{matiere(nomEC)} to Matiere,
+    Absence{etudiant(matriculeET)} to Etudiant
+    
+}
+
+relationship ManyToMany {
+	Inspecteur{professeur(nomProf)} to Professeur{inspecteur},
+    Inspecteur{etudiant(matriculeET)} to Etudiant{inspecteur},
+    Filiere{module(nomUE)} to Module{filiere},
+    Professeur{etudiant(matriculeET)} to Etudiant{professeur},
+    Professeur{classe(nomClasse)} to Classe{professeur},
+    Professeur{matiere(nomEC)} to Matiere{professeur}
+    
+	
+}
+
+relationship ManyToOne {
+    Filiere{Etudiant} to Cycle,
+    Classe{filiere(nomFiliere)} to Filiere{classe}
+}
+
+
+relationship OneToMany {
+	Encadreur{etudiant(matriculeET)} to Etudiant{encadreur},
+    Module{matiere(nomEC)} to Matiere{Module}
+}
+
+
+relationship ManyToMany{
+	Soutenance{etudiant(matriculeET)} to Etudiant{soutenance},
+    Bulletin{professeur(nomProf)} to Professeur{bulletin} // LE DIRECTEUR ECOLE ET le DE SIGNE PLUSIEURS BULLETINs
+}
+
+
+
+relationship ManyToOne {
+	Soutenance{salle(numeroSalle)} to Salle,
+    Bulletin{etudiant(matriculeET)} to Etudiant,
+}
+
+relationship ManyToOne {
+	Soutenance{horaire(dateSout)} to Horaire
+}
+
+relationship ManyToMany {
+	Salle{horaire(dateSout)} to Horaire{salle}
+}
+
+relationship ManyToMany {
+	Jury{professeur(nomProf)} to Professeur{jury}
+}
+relationship OneToMany {
+	Soutenance{jury(presidentJury)} to Jury{soutenance} 
+}
+
+
+relationship ManyToOne {
+	Semestre{anneeScolaire(periode)} to AnneeScolaire, 
+    Bulletin{semestre(nomSemestre)} to Semestre,
+    RecupererBulletin{etudiant(matriculeET)} to Etudiant,
+    RecupererBulletin{bulletin(observation)} to Bulletin,
+    Planche{semestre(nomSemestre)} to Semestre
+    
+}
+
+
+relationship ManyToMany {
+	Note{etudiant(matriculeET)} to Etudiant{note},
+    Note{matiere(nomEC)} to Matiere{note},
+    Etudiant{classe(nomClasse)} to Classe{etudiant},
+   
+}
+
+relationship ManyToMany {
+    DemandeInspecteurEtudiant{etudiant(matriculeET)} to Etudiant{demandeInspecteurEtudiant},
+    DemandeInspecteurEtudiant{inspecteur(nomInspecteur)} to Inspecteur{demandeInspecteurEtudiant}
+    
+}
+
+relationship ManyToMany {
+    DemandeInspecteurDE{professeur(nomProf)} to Professeur{demandeInspecteurDE},
+    DemandeInspecteurDE{inspecteur(nomInspecteur)} to Inspecteur{demandeInspecteurDE}
+    
+}
+
+
+relationship ManyToMany {
+	Classe{matiere(nomEC)} to Matiere{classe}
+}
+
+
+
+// Set pagination options
+paginate all with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

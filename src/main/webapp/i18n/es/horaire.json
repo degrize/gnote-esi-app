@@ -1,0 +1,26 @@
+{
+  "gnoteEsiApp": {
+    "horaire": {
+      "home": {
+        "title": "Horaires",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Horaire",
+        "createOrEditLabel": "Crear o editar Horaire",
+        "notFound": "Ningún Horaires encontrado"
+      },
+      "created": "Un nuevo Horaire ha sido creado con el identificador {{ param }}",
+      "updated": "Un Horaire ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Horaire ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Horaire {{ id }}?"
+      },
+      "detail": {
+        "title": "Horaire"
+      },
+      "id": "ID",
+      "dateSout": "Date Sout",
+      "dateEffet": "Date Effet",
+      "salle": "Salle"
+    }
+  }
+}

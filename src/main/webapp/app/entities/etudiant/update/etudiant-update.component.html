@@ -1,0 +1,170 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-etudiant-heading" data-cy="EtudiantCreateUpdateHeading" jhiTranslate="gnoteEsiApp.etudiant.home.createOrEditLabel">
+        Create or edit a Etudiant
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.matriculeET" for="field_matriculeET">Matricule ET</label>
+          <input
+            type="text"
+            class="form-control"
+            name="matriculeET"
+            id="field_matriculeET"
+            data-cy="matriculeET"
+            formControlName="matriculeET"
+          />
+          <div *ngIf="editForm.get('matriculeET')!.invalid && (editForm.get('matriculeET')!.dirty || editForm.get('matriculeET')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('matriculeET')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.nomET" for="field_nomET">Nom ET</label>
+          <input type="text" class="form-control" name="nomET" id="field_nomET" data-cy="nomET" formControlName="nomET" />
+          <div *ngIf="editForm.get('nomET')!.invalid && (editForm.get('nomET')!.dirty || editForm.get('nomET')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nomET')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.prenomET" for="field_prenomET">Prenom ET</label>
+          <input type="text" class="form-control" name="prenomET" id="field_prenomET" data-cy="prenomET" formControlName="prenomET" />
+          <div *ngIf="editForm.get('prenomET')!.invalid && (editForm.get('prenomET')!.dirty || editForm.get('prenomET')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prenomET')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.photo" for="field_photo">Photo</label>
+          <div>
+            <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('photo')!.value, editForm.get('photoContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ photo: null }); editForm.patchValue({ photoContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_photo"
+              data-cy="photo"
+              (change)="setFileData($event, 'photo', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="photoContentType"
+            id="field_photoContentType"
+            formControlName="photoContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.numeroParent" for="field_numeroParent">Numero Parent</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroParent"
+            id="field_numeroParent"
+            data-cy="numeroParent"
+            formControlName="numeroParent"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.numeroTuteur" for="field_numeroTuteur">Numero Tuteur</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroTuteur"
+            id="field_numeroTuteur"
+            data-cy="numeroTuteur"
+            formControlName="numeroTuteur"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.contactET" for="field_contactET">Contact ET</label>
+          <input type="text" class="form-control" name="contactET" id="field_contactET" data-cy="contactET" formControlName="contactET" />
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gnoteEsiApp.etudiant.classe" for="field_classes">Classe</label>
+          <select class="form-control" id="field_classes" data-cy="classe" multiple name="classes" formControlName="classes">
+            <option
+              [ngValue]="getSelectedClasse(classeOption, editForm.get('classes')!.value)"
+              *ngFor="let classeOption of classesSharedCollection; trackBy: trackClasseById"
+            >
+              {{ classeOption.nomClasse }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.etudiant.encadreur" for="field_encadreur">Encadreur</label>
+          <select class="form-control" id="field_encadreur" data-cy="encadreur" name="encadreur" formControlName="encadreur">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="encadreurOption.id === editForm.get('encadreur')!.value?.id ? editForm.get('encadreur')!.value : encadreurOption"
+              *ngFor="let encadreurOption of encadreursSharedCollection; trackBy: trackEncadreurById"
+            >
+              {{ encadreurOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

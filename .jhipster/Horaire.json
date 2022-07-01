@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083920",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "horaire",
+  "fields": [
+    {
+      "fieldName": "dateSout",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateEffet",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "name": "Horaire",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "salle",
+      "otherEntityRelationshipName": "horaire",
+      "ownerSide": false,
+      "relationshipName": "salle",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-filiere-heading" data-cy="FiliereCreateUpdateHeading" jhiTranslate="gnoteEsiApp.filiere.home.createOrEditLabel">
+        Create or edit a Filiere
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.filiere.nomFiliere" for="field_nomFiliere">Nom Filiere</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomFiliere"
+            id="field_nomFiliere"
+            data-cy="nomFiliere"
+            formControlName="nomFiliere"
+          />
+          <div *ngIf="editForm.get('nomFiliere')!.invalid && (editForm.get('nomFiliere')!.dirty || editForm.get('nomFiliere')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomFiliere')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.filiere.etudiant" for="field_etudiant">Etudiant</label>
+          <select class="form-control" id="field_etudiant" data-cy="etudiant" name="etudiant" formControlName="etudiant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cycleOption.id === editForm.get('etudiant')!.value?.id ? editForm.get('etudiant')!.value : cycleOption"
+              *ngFor="let cycleOption of cyclesSharedCollection; trackBy: trackCycleById"
+            >
+              {{ cycleOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gnoteEsiApp.filiere.module" for="field_modules">Module</label>
+          <select class="form-control" id="field_modules" data-cy="module" multiple name="modules" formControlName="modules">
+            <option
+              [ngValue]="getSelectedModule(moduleOption, editForm.get('modules')!.value)"
+              *ngFor="let moduleOption of modulesSharedCollection; trackBy: trackModuleById"
+            >
+              {{ moduleOption.nomUE }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

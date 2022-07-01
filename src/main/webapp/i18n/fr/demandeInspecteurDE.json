@@ -1,0 +1,26 @@
+{
+  "gnoteEsiApp": {
+    "demandeInspecteurDE": {
+      "home": {
+        "title": "DemandeInspecteurDES",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Demande Inspecteur DE",
+        "createOrEditLabel": "Créer ou éditer un Demande Inspecteur DE",
+        "notFound": "Aucun Demande Inspecteur DE trouvé"
+      },
+      "created": "Un nouveau Demande Inspecteur DE a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Demande Inspecteur DE avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Demande Inspecteur DE avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Demande Inspecteur DE {{ id }} ?"
+      },
+      "detail": {
+        "title": "Demande Inspecteur DE"
+      },
+      "id": "ID",
+      "message": "Message",
+      "professeur": "Professeur",
+      "inspecteur": "Inspecteur"
+    }
+  }
+}
