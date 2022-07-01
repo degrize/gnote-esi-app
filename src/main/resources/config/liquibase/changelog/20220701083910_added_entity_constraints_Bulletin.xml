@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Bulletin.
+    -->
+    <changeSet id="20220701083910-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="etudiant_id"
+                                 baseTableName="bulletin"
+                                 constraintName="fk_bulletin__etudiant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etudiant"/>
+
+        <addForeignKeyConstraint baseColumnNames="semestre_id"
+                                 baseTableName="bulletin"
+                                 constraintName="fk_bulletin__semestre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="semestre"/>
+
+        <addForeignKeyConstraint baseColumnNames="bulletin_id"
+                                 baseTableName="rel_bulletin__professeur"
+                                 constraintName="fk_rel_bulletin__professeur__bulletin_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bulletin"/>
+
+        <addForeignKeyConstraint baseColumnNames="professeur_id"
+                                 baseTableName="rel_bulletin__professeur"
+                                 constraintName="fk_rel_bulletin__professeur__professeur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professeur"/>
+    </changeSet>
+</databaseChangeLog>

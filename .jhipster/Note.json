@@ -1,0 +1,44 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083909",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "note",
+  "fields": [
+    {
+      "fieldName": "note",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typeNote",
+      "fieldType": "TypeNote",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DEVOIR_SUR_TABLE,INTERROGATION,PROJET,DEVOIR_DE_MAISON,PARTICIPATION"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Note",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "note",
+      "ownerSide": true,
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "nomEC",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "note",
+      "ownerSide": true,
+      "relationshipName": "matiere",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

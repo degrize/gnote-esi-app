@@ -1,0 +1,26 @@
+{
+  "gnoteEsiApp": {
+    "demandeInspecteurEtudiant": {
+      "home": {
+        "title": "Demande Inspecteur Etudiants",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Demande Inspecteur Etudiant",
+        "createOrEditLabel": "Crear o editar Demande Inspecteur Etudiant",
+        "notFound": "Ningún Demande Inspecteur Etudiants encontrado"
+      },
+      "created": "Un nuevo Demande Inspecteur Etudiant ha sido creado con el identificador {{ param }}",
+      "updated": "Un Demande Inspecteur Etudiant ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Demande Inspecteur Etudiant ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Demande Inspecteur Etudiant {{ id }}?"
+      },
+      "detail": {
+        "title": "Demande Inspecteur Etudiant"
+      },
+      "id": "ID",
+      "message": "Message",
+      "etudiant": "Etudiant",
+      "inspecteur": "Inspecteur"
+    }
+  }
+}

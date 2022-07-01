@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083924",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cycle",
+  "fields": [
+    {
+      "fieldName": "nomCycle",
+      "fieldType": "TypeCycle",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TS,ING"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Cycle",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

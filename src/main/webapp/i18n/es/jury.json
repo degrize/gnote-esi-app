@@ -1,0 +1,29 @@
+{
+  "gnoteEsiApp": {
+    "jury": {
+      "home": {
+        "title": "Juries",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Jury",
+        "createOrEditLabel": "Crear o editar Jury",
+        "notFound": "Ningún Juries encontrado"
+      },
+      "created": "Un nuevo Jury ha sido creado con el identificador {{ param }}",
+      "updated": "Un Jury ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Jury ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Jury {{ id }}?"
+      },
+      "detail": {
+        "title": "Jury"
+      },
+      "id": "ID",
+      "presidentJury": "President Jury",
+      "professeur": "Professeur",
+      "soutenance": "Soutenance",
+      "help": {
+        "presidentJury": "The firstname attribute."
+      }
+    }
+  }
+}

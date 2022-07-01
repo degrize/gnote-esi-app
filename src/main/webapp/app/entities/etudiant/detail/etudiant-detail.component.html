@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="etudiant">
+      <h2 data-cy="etudiantDetailsHeading"><span jhiTranslate="gnoteEsiApp.etudiant.detail.title">Etudiant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ etudiant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.matriculeET">Matricule ET</span></dt>
+        <dd>
+          <span>{{ etudiant.matriculeET }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.nomET">Nom ET</span></dt>
+        <dd>
+          <span>{{ etudiant.nomET }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.prenomET">Prenom ET</span></dt>
+        <dd>
+          <span>{{ etudiant.prenomET }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.photo">Photo</span></dt>
+        <dd>
+          <div *ngIf="etudiant.photo">
+            <a (click)="openFile(etudiant.photo, etudiant.photoContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ etudiant.photoContentType }}, {{ byteSize(etudiant.photo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.numeroParent">Numero Parent</span></dt>
+        <dd>
+          <span>{{ etudiant.numeroParent }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.numeroTuteur">Numero Tuteur</span></dt>
+        <dd>
+          <span>{{ etudiant.numeroTuteur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.contactET">Contact ET</span></dt>
+        <dd>
+          <span>{{ etudiant.contactET }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.classe">Classe</span></dt>
+        <dd>
+          <span *ngFor="let classe of etudiant.classes; let last = last">
+            <a [routerLink]="['/classe', classe?.id, 'view']">{{ classe.nomClasse }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.etudiant.encadreur">Encadreur</span></dt>
+        <dd>
+          <div *ngIf="etudiant.encadreur">
+            <a [routerLink]="['/encadreur', etudiant.encadreur?.id, 'view']">{{ etudiant.encadreur?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/etudiant', etudiant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

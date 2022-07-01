@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="demandeInspecteurEtudiant">
+      <h2 data-cy="demandeInspecteurEtudiantDetailsHeading">
+        <span jhiTranslate="gnoteEsiApp.demandeInspecteurEtudiant.detail.title">Demande Inspecteur Etudiant</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ demandeInspecteurEtudiant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.demandeInspecteurEtudiant.message">Message</span></dt>
+        <dd>
+          <span>{{ demandeInspecteurEtudiant.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.demandeInspecteurEtudiant.etudiant">Etudiant</span></dt>
+        <dd>
+          <span *ngFor="let etudiant of demandeInspecteurEtudiant.etudiants; let last = last">
+            <a [routerLink]="['/etudiant', etudiant?.id, 'view']">{{ etudiant.matriculeET }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.demandeInspecteurEtudiant.inspecteur">Inspecteur</span></dt>
+        <dd>
+          <span *ngFor="let inspecteur of demandeInspecteurEtudiant.inspecteurs; let last = last">
+            <a [routerLink]="['/inspecteur', inspecteur?.id, 'view']">{{ inspecteur.nomInspecteur }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/demande-inspecteur-etudiant', demandeInspecteurEtudiant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

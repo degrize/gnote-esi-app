@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="recupererBulletin">
+      <h2 data-cy="recupererBulletinDetailsHeading">
+        <span jhiTranslate="gnoteEsiApp.recupererBulletin.detail.title">Recuperer Bulletin</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ recupererBulletin.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.recupererBulletin.signatureEleve">Signature Eleve</span></dt>
+        <dd>
+          <span>{{ recupererBulletin.signatureEleve }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.recupererBulletin.bulletinScanne">Bulletin Scanne</span></dt>
+        <dd>
+          <div *ngIf="recupererBulletin.bulletinScanne">
+            <a
+              (click)="openFile(recupererBulletin.bulletinScanne, recupererBulletin.bulletinScanneContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ recupererBulletin.bulletinScanneContentType }}, {{ byteSize(recupererBulletin.bulletinScanne) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.recupererBulletin.etudiant">Etudiant</span></dt>
+        <dd>
+          <div *ngIf="recupererBulletin.etudiant">
+            <a [routerLink]="['/etudiant', recupererBulletin.etudiant?.id, 'view']">{{ recupererBulletin.etudiant?.matriculeET }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.recupererBulletin.bulletin">Bulletin</span></dt>
+        <dd>
+          <div *ngIf="recupererBulletin.bulletin">
+            <a [routerLink]="['/bulletin', recupererBulletin.bulletin?.id, 'view']">{{ recupererBulletin.bulletin?.observation }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/recuperer-bulletin', recupererBulletin.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

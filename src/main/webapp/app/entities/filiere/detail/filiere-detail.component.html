@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="filiere">
+      <h2 data-cy="filiereDetailsHeading"><span jhiTranslate="gnoteEsiApp.filiere.detail.title">Filiere</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ filiere.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.filiere.nomFiliere">Nom Filiere</span></dt>
+        <dd>
+          <span>{{ filiere.nomFiliere }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.filiere.etudiant">Etudiant</span></dt>
+        <dd>
+          <div *ngIf="filiere.etudiant">
+            <a [routerLink]="['/cycle', filiere.etudiant?.id, 'view']">{{ filiere.etudiant?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.filiere.module">Module</span></dt>
+        <dd>
+          <span *ngFor="let module of filiere.modules; let last = last">
+            <a [routerLink]="['/module', module?.id, 'view']">{{ module.nomUE }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/filiere', filiere.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

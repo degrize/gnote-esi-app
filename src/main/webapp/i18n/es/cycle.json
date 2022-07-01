@@ -1,0 +1,24 @@
+{
+  "gnoteEsiApp": {
+    "cycle": {
+      "home": {
+        "title": "Cycles",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Cycle",
+        "createOrEditLabel": "Crear o editar Cycle",
+        "notFound": "Ningún Cycles encontrado"
+      },
+      "created": "Un nuevo Cycle ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cycle ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cycle ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cycle {{ id }}?"
+      },
+      "detail": {
+        "title": "Cycle"
+      },
+      "id": "ID",
+      "nomCycle": "Nom Cycle"
+    }
+  }
+}

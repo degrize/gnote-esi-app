@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083927",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "recuperer_bulletin",
+  "fields": [
+    {
+      "fieldName": "signatureEleve",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bulletinScanne",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RecupererBulletin",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "recupererBulletin",
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "observation",
+      "otherEntityName": "bulletin",
+      "otherEntityRelationshipName": "recupererBulletin",
+      "relationshipName": "bulletin",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

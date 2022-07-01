@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083910",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bulletin",
+  "fields": [
+    {
+      "fieldName": "signatureDG",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Bulletin",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "bulletin",
+      "relationshipName": "etudiant",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomSemestre",
+      "otherEntityName": "semestre",
+      "otherEntityRelationshipName": "bulletin",
+      "relationshipName": "semestre",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomProf",
+      "otherEntityName": "professeur",
+      "otherEntityRelationshipName": "bulletin",
+      "ownerSide": true,
+      "relationshipName": "professeur",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

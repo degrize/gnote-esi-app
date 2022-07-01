@@ -1,0 +1,30 @@
+{
+  "gnoteEsiApp": {
+    "soutenance": {
+      "home": {
+        "title": "Soutenances",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Soutenance",
+        "createOrEditLabel": "Créer ou éditer un Soutenance",
+        "notFound": "Aucun Soutenance trouvé"
+      },
+      "created": "Un nouveau Soutenance a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Soutenance avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Soutenance avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Soutenance {{ id }} ?"
+      },
+      "detail": {
+        "title": "Soutenance"
+      },
+      "id": "ID",
+      "typeSout": "Type Sout",
+      "themeSout": "Theme Sout",
+      "noteSout": "Note Sout",
+      "jury": "Jury",
+      "salle": "Salle",
+      "horaire": "Horaire",
+      "etudiant": "Etudiant"
+    }
+  }
+}

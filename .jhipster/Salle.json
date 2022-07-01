@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083922",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "salle",
+  "fields": [
+    {
+      "fieldName": "numeroSalle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nbrePlace",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Salle entity.\\n@author The Luis-Borges.",
+  "jpaMetamodelFiltering": false,
+  "name": "Salle",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "dateSout",
+      "otherEntityName": "horaire",
+      "otherEntityRelationshipName": "salle",
+      "ownerSide": true,
+      "relationshipName": "horaire",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

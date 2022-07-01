@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083906",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "annee_scolaire",
+  "fields": [
+    {
+      "fieldName": "periode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "L' année scolaire\\n@author Eleve."
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "AnneeScolaire entity.\\n@author Luis-Borges.",
+  "jpaMetamodelFiltering": false,
+  "name": "AnneeScolaire",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

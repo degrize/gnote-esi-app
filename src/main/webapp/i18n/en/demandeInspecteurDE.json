@@ -1,0 +1,26 @@
+{
+  "gnoteEsiApp": {
+    "demandeInspecteurDE": {
+      "home": {
+        "title": "Demande Inspecteur DES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Demande Inspecteur DE",
+        "createOrEditLabel": "Create or edit a Demande Inspecteur DE",
+        "notFound": "No Demande Inspecteur DES found"
+      },
+      "created": "A new Demande Inspecteur DE is created with identifier {{ param }}",
+      "updated": "A Demande Inspecteur DE is updated with identifier {{ param }}",
+      "deleted": "A Demande Inspecteur DE is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Demande Inspecteur DE {{ id }}?"
+      },
+      "detail": {
+        "title": "Demande Inspecteur DE"
+      },
+      "id": "ID",
+      "message": "Message",
+      "professeur": "Professeur",
+      "inspecteur": "Inspecteur"
+    }
+  }
+}

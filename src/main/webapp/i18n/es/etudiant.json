@@ -1,0 +1,37 @@
+{
+  "gnoteEsiApp": {
+    "etudiant": {
+      "home": {
+        "title": "Etudiants",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Etudiant",
+        "createOrEditLabel": "Crear o editar Etudiant",
+        "notFound": "Ningún Etudiants encontrado"
+      },
+      "created": "Un nuevo Etudiant ha sido creado con el identificador {{ param }}",
+      "updated": "Un Etudiant ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Etudiant ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Etudiant {{ id }}?"
+      },
+      "detail": {
+        "title": "Etudiant"
+      },
+      "id": "ID",
+      "matriculeET": "Matricule ET",
+      "nomET": "Nom ET",
+      "prenomET": "Prenom ET",
+      "photo": "Photo",
+      "numeroParent": "Numero Parent",
+      "numeroTuteur": "Numero Tuteur",
+      "contactET": "Contact ET",
+      "classe": "Classe",
+      "encadreur": "Encadreur",
+      "inspecteur": "Inspecteur",
+      "professeur": "Professeur",
+      "soutenance": "Soutenance",
+      "note": "Note",
+      "demandeInspecteurEtudiant": "Demande Inspecteur Etudiant"
+    }
+  }
+}

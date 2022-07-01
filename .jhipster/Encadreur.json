@@ -1,0 +1,37 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083919",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "encadreur",
+  "fields": [
+    {
+      "fieldName": "nomEnc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomsEnc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailEnc",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Encadreur",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matriculeET",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "encadreur",
+      "relationshipName": "etudiant",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

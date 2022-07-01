@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083917",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "matiere",
+  "fields": [
+    {
+      "fieldName": "nomEC",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "coeff",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Matiere",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "module",
+      "otherEntityRelationshipName": "matiere",
+      "relationshipName": "module",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "professeur",
+      "otherEntityRelationshipName": "matiere",
+      "ownerSide": false,
+      "relationshipName": "professeur",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "note",
+      "otherEntityRelationshipName": "matiere",
+      "ownerSide": false,
+      "relationshipName": "note",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "matiere",
+      "ownerSide": false,
+      "relationshipName": "classe",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

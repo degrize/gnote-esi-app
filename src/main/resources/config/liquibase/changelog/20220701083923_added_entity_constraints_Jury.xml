@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Jury.
+    -->
+    <changeSet id="20220701083923-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="jury_id"
+                                 baseTableName="rel_jury__professeur"
+                                 constraintName="fk_rel_jury__professeur__jury_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jury"/>
+
+        <addForeignKeyConstraint baseColumnNames="professeur_id"
+                                 baseTableName="rel_jury__professeur"
+                                 constraintName="fk_rel_jury__professeur__professeur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professeur"/>
+
+        <addForeignKeyConstraint baseColumnNames="soutenance_id"
+                                 baseTableName="jury"
+                                 constraintName="fk_jury__soutenance_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="soutenance"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-note-heading" data-cy="NoteCreateUpdateHeading" jhiTranslate="gnoteEsiApp.note.home.createOrEditLabel">
+        Create or edit a Note
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.note.note" for="field_note">Note</label>
+          <input type="number" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+          <div *ngIf="editForm.get('note')!.invalid && (editForm.get('note')!.dirty || editForm.get('note')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('note')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('note')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gnoteEsiApp.note.typeNote" for="field_typeNote">Type Note</label>
+          <select class="form-control" name="typeNote" formControlName="typeNote" id="field_typeNote" data-cy="typeNote">
+            <option [ngValue]="null">{{ 'gnoteEsiApp.TypeNote.null' | translate }}</option>
+            <option *ngFor="let typeNote of typeNoteValues" [value]="typeNote">{{ 'gnoteEsiApp.TypeNote.' + typeNote | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('typeNote')!.invalid && (editForm.get('typeNote')!.dirty || editForm.get('typeNote')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('typeNote')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gnoteEsiApp.note.etudiant" for="field_etudiants">Etudiant</label>
+          <select class="form-control" id="field_etudiants" data-cy="etudiant" multiple name="etudiants" formControlName="etudiants">
+            <option
+              [ngValue]="getSelectedEtudiant(etudiantOption, editForm.get('etudiants')!.value)"
+              *ngFor="let etudiantOption of etudiantsSharedCollection; trackBy: trackEtudiantById"
+            >
+              {{ etudiantOption.matriculeET }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gnoteEsiApp.note.matiere" for="field_matieres">Matiere</label>
+          <select class="form-control" id="field_matieres" data-cy="matiere" multiple name="matieres" formControlName="matieres">
+            <option
+              [ngValue]="getSelectedMatiere(matiereOption, editForm.get('matieres')!.value)"
+              *ngFor="let matiereOption of matieresSharedCollection; trackBy: trackMatiereById"
+            >
+              {{ matiereOption.nomEC }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

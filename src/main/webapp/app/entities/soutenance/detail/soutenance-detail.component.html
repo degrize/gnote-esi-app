@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="soutenance">
+      <h2 data-cy="soutenanceDetailsHeading"><span jhiTranslate="gnoteEsiApp.soutenance.detail.title">Soutenance</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ soutenance.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.soutenance.typeSout">Type Sout</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gnoteEsiApp.TypeSoutenance.' + soutenance.typeSout }}">{{ soutenance.typeSout }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.soutenance.themeSout">Theme Sout</span></dt>
+        <dd>
+          <span>{{ soutenance.themeSout }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.soutenance.noteSout">Note Sout</span></dt>
+        <dd>
+          <span>{{ soutenance.noteSout }}</span>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.soutenance.salle">Salle</span></dt>
+        <dd>
+          <div *ngIf="soutenance.salle">
+            <a [routerLink]="['/salle', soutenance.salle?.id, 'view']">{{ soutenance.salle?.numeroSalle }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.soutenance.horaire">Horaire</span></dt>
+        <dd>
+          <div *ngIf="soutenance.horaire">
+            <a [routerLink]="['/horaire', soutenance.horaire?.id, 'view']">{{ soutenance.horaire?.dateSout }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gnoteEsiApp.soutenance.etudiant">Etudiant</span></dt>
+        <dd>
+          <span *ngFor="let etudiant of soutenance.etudiants; let last = last">
+            <a [routerLink]="['/etudiant', etudiant?.id, 'view']">{{ etudiant.matriculeET }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/soutenance', soutenance.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

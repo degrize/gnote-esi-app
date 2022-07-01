@@ -1,0 +1,33 @@
+{
+  "gnoteEsiApp": {
+    "inspecteur": {
+      "home": {
+        "title": "Inspecteurs",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inspecteur",
+        "createOrEditLabel": "Crear o editar Inspecteur",
+        "notFound": "Ningún Inspecteurs encontrado"
+      },
+      "created": "Un nuevo Inspecteur ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inspecteur ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inspecteur ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inspecteur {{ id }}?"
+      },
+      "detail": {
+        "title": "Inspecteur"
+      },
+      "id": "ID",
+      "nomInspecteur": "Nom Inspecteur",
+      "prenomInspecteur": "Prenom Inspecteur",
+      "contactInspecteur": "Contact Inspecteur",
+      "professeur": "Professeur",
+      "etudiant": "Etudiant",
+      "demandeInspecteurEtudiant": "Demande Inspecteur Etudiant",
+      "demandeInspecteurDE": "Demande Inspecteur DE",
+      "help": {
+        "nomInspecteur": "The firstname attribute."
+      }
+    }
+  }
+}

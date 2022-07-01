@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220701083918",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "module",
+  "fields": [
+    {
+      "fieldName": "nomUE",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Module",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomEC",
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "module",
+      "relationshipName": "matiere",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "filiere",
+      "otherEntityRelationshipName": "module",
+      "ownerSide": false,
+      "relationshipName": "filiere",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
